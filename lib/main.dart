@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:quiz_app/constants.dart';
 
 import './Screens/quiz/quiz_screen.dart';

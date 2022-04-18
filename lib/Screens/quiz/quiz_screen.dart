@@ -43,7 +43,7 @@ class _QuizScreenState extends State<QuizScreen>
         correctAnswered += 1;
       }
       _animController.stop();
-      Future.delayed(Duration(seconds: 3), () {
+      Future.delayed(Duration(seconds: 2), () {
         nextQuestion();
       });
     });
@@ -54,7 +54,8 @@ class _QuizScreenState extends State<QuizScreen>
     if (_questionVal != _questions.length) {
       isAnswered = false;
       _pageController.nextPage(
-          duration: Duration(milliseconds: 250), curve: Curves.ease);
+
+          duration: Duration(milliseconds: 500), curve: Curves.decelerate);
 
       _animController.reset();
       _animController.forward().whenComplete(nextQuestion);
