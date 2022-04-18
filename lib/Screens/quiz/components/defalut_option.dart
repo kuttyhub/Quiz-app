@@ -22,9 +22,12 @@ class DefaultOption extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              "${index + 1}. $text",
-              style: TextStyle(color:kGrayColor, fontSize: 16),
+            Expanded(
+              child: Text(
+                "${index + 1}. $text",
+                style: TextStyle(color:kGrayColor, fontSize: 16),
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             Container(
               height: 26,

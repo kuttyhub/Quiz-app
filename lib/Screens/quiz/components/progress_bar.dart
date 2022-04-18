@@ -10,9 +10,9 @@ class ProgressBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 35,
+      height: 30,
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0xFF3F4768), width: 3),
+        border: Border.all(color: Color(0xFF3F4768), width: 2),
         borderRadius: BorderRadius.circular(50),
       ),
       child: Stack(

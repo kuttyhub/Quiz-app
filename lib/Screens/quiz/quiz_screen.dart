@@ -206,33 +206,37 @@ class _QuizScreenState extends State<QuizScreen>
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(25),
                           ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Spacer(),
-                              Text(
-                                _questions[index].question,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline6
-                                    .copyWith(color: kBlackColor),
-                              ),
-                              Spacer(),
-                              Column(
-                                children: [
-                                  ...List.generate(
-                                    _questions[index].answers.length,
-                                    (inx) => getTheRightColor(
-                                      index: inx,
-                                      text: _questions[index].answers[inx],
-                                      press: () => checkAns(index, inx),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  _questions[index].question,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline6
+                                      .copyWith(color: kBlackColor),
+                                ),
+                                Expanded(
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      children: [
+                                        ...List.generate(
+                                          _questions[index].answers.length,
+                                          (inx) => getTheRightColor(
+                                            index: inx,
+                                            text: _questions[index].answers[inx],
+                                            press: () => checkAns(index, inx),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ],
-                              ),
-                              Spacer(),
-                            ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         itemCount: _questions.length,
