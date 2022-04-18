@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import './components/correct_option.dart';
 import './components/defalut_option.dart';
@@ -20,13 +21,13 @@ class _QuizScreenState extends State<QuizScreen>
   PageController _pageController;
   AnimationController _animController;
   Animation<double> _animation;
-  List<Question> _questions = getQuestion();
   String _userName;
   var _questionVal = 1;
   var isAnswered = false;
   int correctAns;
   int selectedAns;
   int correctAnswered = 0;
+  List<Question> _questions = [];
 
   void updateTheQnNum(int index) {
     _questionVal = index + 1;
@@ -110,9 +111,17 @@ class _QuizScreenState extends State<QuizScreen>
     _animController.forward();
     _animController.forward().whenComplete(nextQuestion);
     _pageController = PageController();
+
+    setQuestions();
     super.initState();
   }
-
+void setQuestions() async{
+  final String response = await rootBundle.loadString('assets/questions.json');
+  List<Question> questions = questionFromJson(response);
+  setState(() {
+   _questions= questions;
+  });
+}
   @override
   void dispose() {
     _animController.dispose();
